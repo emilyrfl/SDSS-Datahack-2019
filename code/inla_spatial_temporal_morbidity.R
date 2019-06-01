@@ -23,7 +23,7 @@
 
   ###reading and exporting the shape file
   ## shape file available upon request
-  kilifi_sub <- maptools::readShapePoly ( "data/kilif_sub_loc_Shape/DSS_subloc_Arc.shp",
+  kilifi_sub <- maptools::readShapePoly( "data/kilif_sub_loc_Shape/DSS_subloc_Arc.shp",
                                           IDvar="Adj_ID", proj4string=CRS("+proj=longlat +ellps=clrk66"))
   
   temp <- spdep::poly2nb(kilifi_sub)
@@ -252,7 +252,9 @@ attr(kilifi_sub, "data") <- merge(data.kilifi2, maps.cat.zeta2,
                                   by.x="Adj_ID" , by.y="unique.admData2.Adj_ID.")
 
 ## mapping the risk ratio 
-spplot(obj=kilifi_sub, zcol= "cat.zeta2",col.regions=diverge_hsv(8), scales=list(draw = TRUE), asp=1)
+spplot(obj=kilifi_sub, zcol= "cat.zeta2",
+       col.regions=diverge_hsv(8), 
+       scales=list(draw = TRUE), asp=1)
 
 ### temporal graph
 plot( resultUH2b, plot.fixed.effects = TRUE , constant=FALSE,plot.cpo = F,single =F)
